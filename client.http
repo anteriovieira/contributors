@@ -3,5 +3,5 @@ content-type: application/json
 
 ###
 
-GET http://localhost:3000/repository/owen-it/laravel-auditing HTTP/1.1
+GET http://localhost:3000/owen-it/laravel-auditing HTTP/1.1
 content-type: application/json

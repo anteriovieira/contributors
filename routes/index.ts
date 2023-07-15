@@ -1,3 +1,3 @@
 export default eventHandler(() => {
-  return { nitro: 'Is Awesome!' }
+  return { 'laravel-auditing': 'Is Awesome!', datetime: new Date() }
 })
