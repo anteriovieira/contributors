@@ -3,9 +3,11 @@
   "scripts": {
     "dev": "npx nitropack dev",
     "build": "npx nitropack build",
-    "preview": "node .output/server/index.mjs"
+    "preview": "node .output/server/index.mjs",
+    "deploy": "yarn build && wrangler deploy"
   },
   "dependencies": {
-    "nitropack": "latest"
+    "nitropack": "latest",
+    "ohmyfetch": "^0.4.21"
   }
 }
