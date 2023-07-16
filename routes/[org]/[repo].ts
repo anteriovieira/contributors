@@ -1,4 +1,4 @@
-import { ghRepoContributors } from "../../utils/github"
+import { ghRepoContributors } from '../../utils/github'
 
 export default eventHandler(async (event) => {
   const { org, repo } = event.context.params

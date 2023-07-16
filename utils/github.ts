@@ -13,7 +13,7 @@ const cacheOptions = (name: string) => ({
 })
 
 export const ghFetch = async (url: string, options: FetchOptions = {}) => {
-  const token = await globalThis.Github.get('GH_TOKEN')
+  const token = await globalThis.Github?.get('GH_TOKEN') || process.env.GH_TOKEN
 
   return $fetch(url, {
     baseURL: 'https://api.github.com',
