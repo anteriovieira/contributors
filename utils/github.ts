@@ -1,8 +1,6 @@
 import type { CacheOptions } from 'nitropack'
 import type { FetchOptions } from 'ohmyfetch'
 
-const runtimeConfig = useRuntimeConfig()
-
 const commonCacheOptions: CacheOptions = {
   group: "gh",
   swr: true,
@@ -15,21 +13,23 @@ const cacheOptions = (name: string) => ({
 })
 
 export const ghFetch = async (url: string, options: FetchOptions = {}) => {
+  const token = await globalThis.Github.get('GH_TOKEN')
+
   return $fetch(url, {
     baseURL: 'https://api.github.com',
     headers: {
       'User-Agent': 'nitro',
-      'Authorization': `Bearer ${runtimeConfig.GH_TOKEN}`,
+      'Authorization': `Bearer ${token}`,
       ...options?.headers,
     },
   })
 }
 
-export const ghRepoContributors = cachedFunction(async (repo: string, size = 100) => {
-  const handler = async (page = 1) => {
+export const ghRepoContributors = cachedFunction(async (repo: string) => {
+  const handler = async (page = 1, size= 100) => {
     const contributors: any[] = []
 
-    const data: any = await ghFetch(`/repos/${repo}/contributors?per_page=${size}&anon=true`)
+    const data: any = await ghFetch(`/repos/${repo}/contributors?per_page=${size}&anon=true&page=${page}`)
 
     contributors.push(...data.map((d) => ({
       id: d.id,

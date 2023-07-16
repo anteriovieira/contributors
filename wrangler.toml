@@ -1,0 +1,11 @@
+name = "contributors"
+main = "./.output/server/index.mjs"
+workers_dev = true
+compatibility_date = "2022-09-10"
+account_id = "efefeaa3e4d08717c6a4f102115b33d5"
+kv_namespaces = [
+  { binding = "Github", id = "55d451751e7e43269ca1d68752f3fe10" }
+]
+
+[site]
+bucket = ".output/public"
